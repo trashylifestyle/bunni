@@ -147,5 +147,14 @@ client.on("ready", () => {
 console.log("=== LLEGUE AL LOGIN ===");
 console.log("TOKEN EXISTS:", !!DISCORD_TOKEN);
 
-client.login(DISCORD_TOKEN)
-  .catch(error => console.error("LOGIN ERROR:", error));
+console.log("=== INTENTANDO LOGIN A DISCORD ===");
+
+const loginPromise = client.login(DISCORD_TOKEN);
+
+loginPromise
+  .then(() => console.log("=== LOGIN PROMISE RESUELTA ==="))
+  .catch(error => console.error("=== LOGIN ERROR ===", error));
+
+setTimeout(() => {
+  console.log("=== LOGIN LLEVA 30 SEGUNDOS SIN RESOLVERSE ===");
+}, 30000);
