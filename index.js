@@ -146,12 +146,20 @@ client.on("shardError", error => {
 
 console.log("=== LLEGUE AL LOGIN ===");
 
-client.login(DISCORD_TOKEN);
+client.on("debug", message => {
+  console.log("DISCORD DEBUG:", message);
+});
+
+client.on("error", error => {
+  console.error("DISCORD ERROR:", error);
+});
 
 client.on("ready", () => {
   console.log("=== BOT READY ===");
 });
 
-client.on("error", error => {
-  console.error("=== BOT ERROR ===", error);
-});
+console.log("=== LLEGUE AL LOGIN ===");
+console.log("TOKEN EXISTS:", !!DISCORD_TOKEN);
+
+client.login(DISCORD_TOKEN)
+  .catch(error => console.error("LOGIN ERROR:", error));
