@@ -137,20 +137,6 @@ client.on("interactionCreate", async interaction => {
   }
 });
 client.on("error", error => {
-  console.error("DISCORD CLIENT ERROR:", error);
-});
-
-client.on("shardError", error => {
-  console.error("DISCORD SHARD ERROR:", error);
-});
-
-console.log("=== LLEGUE AL LOGIN ===");
-
-client.on("debug", message => {
-  console.log("DISCORD DEBUG:", message);
-});
-
-client.on("error", error => {
   console.error("DISCORD ERROR:", error);
 });
 
