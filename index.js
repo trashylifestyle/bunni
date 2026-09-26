@@ -146,6 +146,12 @@ client.on("shardError", error => {
 
 console.log("=== LLEGUE AL LOGIN ===");
 
-client.login(DISCORD_TOKEN)
-  .then(() => console.log("Login enviado a Discord."))
-  .catch(error => console.error("LOGIN ERROR:", error));
+client.login(DISCORD_TOKEN);
+
+client.on("ready", () => {
+  console.log("=== BOT READY ===");
+});
+
+client.on("error", error => {
+  console.error("=== BOT ERROR ===", error);
+});
