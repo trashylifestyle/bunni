@@ -143,4 +143,6 @@ client.on("error", error => {
 client.on("shardError", error => {
   console.error("DISCORD SHARD ERROR:", error);
 });
-client.login(DISCORD_TOKEN);
+client.login(DISCORD_TOKEN)
+  .then(() => console.log("Login enviado a Discord."))
+  .catch(error => console.error("LOGIN ERROR:", error));
