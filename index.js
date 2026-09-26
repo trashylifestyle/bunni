@@ -136,6 +136,7 @@ client.on("interactionCreate", async interaction => {
     });
   }
 });
+
 client.on("error", error => {
   console.error("DISCORD ERROR:", error);
 });
@@ -144,10 +145,20 @@ client.on("ready", () => {
   console.log("=== BOT READY ===");
 });
 
+// LOGIN + GATEWAY TEST
 console.log("=== LLEGUE AL LOGIN ===");
-console.log("TOKEN EXISTS:", !!DISCORD_TOKEN);
+console.log("=== TEST GATEWAY ===");
+
+fetch("https://discord.com/api/v10/gateway")
+  .then(r => {
+    console.log("GATEWAY HTTP STATUS:", r.status);
+    return r.text();
+  })
+  .then(data => console.log("GATEWAY RESPONSE:", data))
+  .catch(err => console.error("GATEWAY FETCH ERROR:", err));
 
 console.log("=== INTENTANDO LOGIN A DISCORD ===");
+console.log("TOKEN EXISTS:", !!DISCORD_TOKEN);
 
 const loginPromise = client.login(DISCORD_TOKEN);
 
