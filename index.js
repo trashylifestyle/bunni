@@ -136,5 +136,11 @@ client.on("interactionCreate", async interaction => {
     });
   }
 });
+client.on("error", error => {
+  console.error("DISCORD CLIENT ERROR:", error);
+});
 
+client.on("shardError", error => {
+  console.error("DISCORD SHARD ERROR:", error);
+});
 client.login(DISCORD_TOKEN);
